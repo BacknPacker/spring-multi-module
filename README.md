@@ -8,6 +8,7 @@
 * Java 17
 * Gradle 7.6.1
 * Spring Boot 3.0.6
+* MySQL
 
 ## 기술 세부 스택
 
@@ -15,6 +16,7 @@ Spring Boot
 
 * Spring Web
 * Lombok
+* Spring Data JPA
 
 ## 질문, 건의 📬
 
