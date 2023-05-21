@@ -3,3 +3,17 @@ spring:
     name: module_api
   config:
     import: classpath:props/${spring.application.name}-${spring.profiles.active}.yml
+
+feign:
+  url:
+    prefix: http://localhost:8080/target_server # DemoFeignClient 에서 사용할 url prefix
+  client:
+    config:
+      default:
+        connectTimeout: 1000
+        readTimeout: 3000
+        loggerLevel: NONE
+      demo-client: # DemoFeignClient 에서 사용할 Client 설정 값
+        connectTimeout: 1000
+        readTimeout: 10000
+        loggerLevel: HEADERS # 여기서 설저한 값만 FeignCustomLogger -> Logger.Level logLevel 변수에 할당됨.
