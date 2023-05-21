@@ -1,5 +1,6 @@
 package dev.be.moduleapi.controller;
 
+import dev.be.moduleapi.feign.common.dto.BaseResponseInfo;
 import dev.be.moduleapi.service.DemoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,5 +25,10 @@ public class DemoController {
     @GetMapping("/exception")
     public String exception(){
         return demoService.exception();
+    }
+
+    @GetMapping("/get")
+    public BaseResponseInfo get(){
+        return demoService.get();
     }
 }
