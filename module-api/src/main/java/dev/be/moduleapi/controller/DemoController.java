@@ -4,6 +4,7 @@ import dev.be.moduleapi.feign.common.dto.BaseResponseInfo;
 import dev.be.moduleapi.service.DemoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,5 +31,10 @@ public class DemoController {
     @GetMapping("/get")
     public BaseResponseInfo get(){
         return demoService.get();
+    }
+
+    @GetMapping("/post")
+    public BaseResponseInfo post(){
+        return demoService.post();
     }
 }

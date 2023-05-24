@@ -2,6 +2,7 @@ package dev.be.moduleapi.service;
 
 import dev.be.moduleapi.exception.CustomException;
 import dev.be.moduleapi.feign.client.DemoFeignClient;
+import dev.be.moduleapi.feign.common.dto.BaseRequestInfo;
 import dev.be.moduleapi.feign.common.dto.BaseResponseInfo;
 import dev.be.modulecommon.domain.Member;
 import dev.be.modulecommon.enums.CodeEnum;
@@ -38,6 +39,22 @@ public class DemoService {
 
     public BaseResponseInfo get(){
         ResponseEntity<BaseResponseInfo> response = demoFeignClient.callGet("CustomHeader", "CustomName", 100L);
+
+        System.out.println("response.getBody().getName() = " + response.getBody().getName());
+        System.out.println("response.getBody().getAge() = " + response.getBody().getAge());
+        System.out.println("response.getBody().getHeader() = " + response.getBody().getHeader());
+
+        return response.getBody();
+    }
+
+    public BaseResponseInfo post() {
+
+        BaseRequestInfo baseRequestInfo = BaseRequestInfo.builder()
+                .name("customName")
+                .age(2L)
+                .build();
+
+        ResponseEntity<BaseResponseInfo> response = demoFeignClient.callPost("CustomHeader", baseRequestInfo);
 
         System.out.println("response.getBody().getName() = " + response.getBody().getName());
         System.out.println("response.getBody().getAge() = " + response.getBody().getAge());
